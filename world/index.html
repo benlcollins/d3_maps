@@ -5,6 +5,12 @@
 </head>
 <style>
 
+path {
+	stroke: white;
+	stroke-width: 1px;
+	fill: steelblue;
+}
+
 </style>
 
 <body>
@@ -39,17 +45,17 @@
     .enter()
       .append("path")
       .attr("d", path);
+	});
 
-	// d3.json("world.json", function(error, topology){
-	// 	if (error) return console.log(error);
+	var zoom = d3.behavior.zoom()
+		.on("zoom", function(){
+			g.attr("transform", "translate(" + 
+				d3.event.translate.join(",") +")scale(" + d3.event.scale + ")");
+			g.selectAll("path")
+				.attr("d", path.projection(projection));
+	});
 
-	// 	g.selectAll("path")
-	// 		.data(topojson.object(topology, topology.objects.countries)
-	// 			.geometries)
-	// 		.enter()
-	// 			.append("path")
-	// 			.attr("d",path);
-	})
+	svg.call(zoom);
 
 	</script>
 </body>
