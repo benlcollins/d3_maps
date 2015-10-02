@@ -6,13 +6,14 @@
 <style>
 
 .subunit.USB { fill: #ddc; }
-.subunit.USH { fill: #cdd; }
-.subunit.USK { fill: #cdc; }
+.subunit.USH { fill: #ddc; }
+.subunit.USK { fill: #ddc; }
+.subunit.CAN, .subunit.MEX { fill: none; }
 
 .subunit-boundary {
 	fill: none;
 	stroke: #777;
-	stroke-dasharray: 2,2;
+	/*stroke-dasharray: 2,2;*/
 	stroke-linejoin: round;
 }
 
@@ -88,7 +89,7 @@
 					return a === b;
 				}))
 				.attr("d", path)
-				.attr("class", "subunit-boundary IRL");
+				.attr("class", "subunit-boundary CAN");
 
 		svg.append("path")
 		    .datum(topojson.feature(usa, usa.objects.places2))
